@@ -12,6 +12,14 @@ the private token for fetching the certifcate package
 
 the url of the Let's Encrypt certificate package
 
+### `gitlab_lets_encrypt_package_secret`
+
+the secret to decrypt the certificate package
+
+### `gitlab_lets_encrypt_FQDN`
+
+the FQDN of the certificate
+
 ### `gitlab_lets_encrypt_notify`
 
 the handler to notify about changes

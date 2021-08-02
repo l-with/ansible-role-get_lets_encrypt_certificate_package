@@ -12,9 +12,9 @@
   ansible.builtin.shell:
     cmd: >
       openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp//tmp/le_{{ gitlab_lets_encrypt_FQDN }}.zip | tar xzC /
-    creates: /etc/letsencrypt/live/{{ server_FQDN }}
+    creates: /etc/letsencrypt/live/{{ gitlab_lets_encrypt_FQDN }}
   environment:
-    LE_CERT_PACKAGE_SECRET: "{{ le_cert_package_secret }}"
+    LE_CERT_PACKAGE_SECRET: "{{ gitlab_lets_encrypt_package_secret }}"
   notify: "{{ gitlab_lets_encrypt_notify }}"
 
 ...
