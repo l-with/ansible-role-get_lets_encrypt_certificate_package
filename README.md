@@ -1,6 +1,6 @@
 # Ansible Role Get Let's Encrypt Certificate Package
 
-gets and installs Let's Encrypt certificate from GitLab project
+gets and installs Let's Encrypt certificate package from url
 
 This role can be used to get prepared package of Let's Encrypt Cerificates (for instance by DNS challenge).
 
