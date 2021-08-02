@@ -2,7 +2,7 @@
 
 gets and installs Let's Encrypt certificate package from url
 
-This role can be used to get prepared package of Let's Encrypt Cerificates (for instance by DNS challenge).
+This role can be used to get a prepared package of a Let's Encrypt Cerificate (for instance by DNS challenge).
 
 ## Role Variables
 
