@@ -10,7 +10,7 @@
 - name: Ensure decrypt and untar Let's Encrypt Certificate Package
   ansible.builtin.shell:
     cmd: >
-      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp//tmp/le_{{ get_lets_encrypt_certificate_package_FQDN }}.zip | tar xzC /
+      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp/le_{{ get_lets_encrypt_certificate_package_FQDN }}.zip | tar xzC /
     creates: /etc/letsencrypt/live/{{ get_lets_encrypt_certificate_package_FQDN }}
   environment:
     LE_CERT_PACKAGE_SECRET: "{{ get_lets_encrypt_certificate_package_secret }}"
