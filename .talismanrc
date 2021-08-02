@@ -1,0 +1,7 @@
+fileignoreconfig:
+
+- filename: tasks/main.yml
+  allowed_patterns:
+  - proxy_pass\ +http.*
+  - openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET.*
+  - LE_CERT_PACKAGE_SECRET:\ \"\{\{ \w+ \}\}\"

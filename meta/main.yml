@@ -1,0 +1,14 @@
+---
+
+galaxy_info:
+  role_name: gitlab_lets_encrypt
+  description: fetch and install Let's Encrypt certificate from GitLab
+  author: l_with
+  license: MIT
+  license_file: LICENSE
+  min_ansible_version: 2.9
+  platforms:
+  - name: Ubuntu
+    versions: focal
+
+...
