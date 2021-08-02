@@ -8,6 +8,10 @@ Gets and installs Let's Encrypt certificate from GitLab project
 
 the private token for fetching the certifcate package
 
+### `gitlab_lets_encrypt_package_url_headers`
+
+the headers for the url of the Let's Encrypt certificate package
+
 ### `gitlab_lets_encrypt_package_url`
 
 the url of the Let's Encrypt certificate package

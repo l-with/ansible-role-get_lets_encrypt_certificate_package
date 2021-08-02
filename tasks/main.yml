@@ -2,8 +2,8 @@
 
 - name: Ensure Let's Encrypt Certificate Package
   ansible.builtin.get_url:
-    headers:
-      PRIVATE-TOKEN: "{{ gitlab_lets_encrypt_api_token }}"
+    headers: "{{ gitlab_lets_encrypt_package_url_headers }}"
+      # PRIVATE-TOKEN: "{{ gitlab_lets_encrypt_api_token }}"
     url: "{{ gitlab_lets_encrypt_package_url }}"
     dest: "/tmp/le_{{ gitlab_lets_encrypt_FQDN }}.zip"
   notify: "{{ gitlab_lets_encrypt_notify }}"
