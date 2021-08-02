@@ -1,8 +1,8 @@
 ---
 
 galaxy_info:
-  role_name: gitlab_lets_encrypt
-  description: fetch and install Let's Encrypt certificate from GitLab
+  role_name: get_lets_encrypt_certificate_package
+  description: get and install Let's Encrypt certificate
   author: l_with
   license: MIT
   license_file: LICENSE

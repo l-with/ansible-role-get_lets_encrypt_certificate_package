@@ -1,29 +1,27 @@
-# Ansible Role GitLab Let's Encrypt
+# Ansible Role Get Let's Encrypt Certificate Package
 
-Gets and installs Let's Encrypt certificate from GitLab project
+gets and installs Let's Encrypt certificate from GitLab project
+
+This role can be used to get prepared package of Let's Encrypt Cerificates (for instance by DNS challenge).
 
 ## Role Variables
 
-### `gitlab_lets_encrypt_api_token`
-
-the private token for fetching the certifcate package
-
-### `gitlab_lets_encrypt_package_url_headers`
+### `get_lets_encrypt_certificate_package_url_headers`
 
 the headers for the url of the Let's Encrypt certificate package
 
-### `gitlab_lets_encrypt_package_url`
+### `get_lets_encrypt_certificate_package_url`
 
 the url of the Let's Encrypt certificate package
 
-### `gitlab_lets_encrypt_package_secret`
+### `get_lets_encrypt_certificate_package_secret`
 
 the secret to decrypt the certificate package
 
-### `gitlab_lets_encrypt_FQDN`
+### `get_lets_encrypt_certificate_package_FQDN`
 
 the FQDN of the certificate
 
-### `gitlab_lets_encrypt_notify`
+### `get_lets_encrypt_certificate_package_notify`
 
 the handler to notify about changes

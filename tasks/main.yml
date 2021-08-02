@@ -2,19 +2,18 @@
 
 - name: Ensure Let's Encrypt Certificate Package
   ansible.builtin.get_url:
-    headers: "{{ gitlab_lets_encrypt_package_url_headers }}"
-      # PRIVATE-TOKEN: "{{ gitlab_lets_encrypt_api_token }}"
-    url: "{{ gitlab_lets_encrypt_package_url }}"
-    dest: "/tmp/le_{{ gitlab_lets_encrypt_FQDN }}.zip"
-  notify: "{{ gitlab_lets_encrypt_notify }}"
+    headers: "{{ get_lets_encrypt_certificate_package_url_headers }}"
+    url: "{{ get_lets_encrypt_certificate_package_url }}"
+    dest: "/tmp/le_{{ get_lets_encrypt_certificate_package_FQDN }}.zip"
+  notify: "{{ get_lets_encrypt_certificate_package_notify }}"
 
 - name: Ensure decrypt and untar Let's Encrypt Certificate Package
   ansible.builtin.shell:
     cmd: >
-      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp//tmp/le_{{ gitlab_lets_encrypt_FQDN }}.zip | tar xzC /
-    creates: /etc/letsencrypt/live/{{ gitlab_lets_encrypt_FQDN }}
+      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp//tmp/le_{{ get_lets_encrypt_certificate_package_FQDN }}.zip | tar xzC /
+    creates: /etc/letsencrypt/live/{{ get_lets_encrypt_certificate_package_FQDN }}
   environment:
-    LE_CERT_PACKAGE_SECRET: "{{ gitlab_lets_encrypt_package_secret }}"
-  notify: "{{ gitlab_lets_encrypt_notify }}"
+    LE_CERT_PACKAGE_SECRET: "{{ get_lets_encrypt_certificate_package_secret }}"
+  notify: "{{ get_lets_encrypt_certificate_package_notify }}"
 
 ...
