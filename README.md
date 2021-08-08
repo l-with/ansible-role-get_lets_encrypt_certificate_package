@@ -35,3 +35,7 @@ the FQDN of the certificate
 ### `get_lets_encrypt_certificate_package_notify`: `get_lets_encrypt_certificate_package.notify`
 
 the handler to notify about changes
+
+### `get_lets_encrypt_certificate_package_debug`: `no`
+
+if debug information should be printed

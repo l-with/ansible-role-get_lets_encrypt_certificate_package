@@ -9,6 +9,11 @@
       notify:      "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) }}"
       secret:      "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
 
+- name: Print _get_lets_encrypt_certificate_package
+  ansible.builtin.debug:
+    msg: "_get_lets_encrypt_certificate_package: {{ _get_lets_encrypt_certificate_package }}"
+  when: get_lets_encrypt_certificate_package_debug
+  
 - name: Ensure Let's Encrypt Certificate Package
   ansible.builtin.get_url:
     headers: "{{ _get_lets_encrypt_certificate_package.url_headers }}"
