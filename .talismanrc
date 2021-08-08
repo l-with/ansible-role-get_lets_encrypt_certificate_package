@@ -4,4 +4,10 @@ fileignoreconfig:
   allowed_patterns:
   - proxy_pass\ +http.*
   - openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET.*
-  - LE_CERT_PACKAGE_SECRET:\ \"\{\{ \w+ \}\}\"
+  - LE_CERT_PACKAGE_SECRET:\ \"\{\{ \S+ \}\}\"
+  - secret:\ +\"\{\{ .* \}\}\"
+
+
+- filename: README.md
+  allowed_patterns:
+  - .*get_lets_encrypt_certificate_package_secret.*get_lets_encrypt_certificate_package.secret.*
