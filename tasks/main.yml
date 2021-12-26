@@ -7,7 +7,7 @@
       url: "{{ get_lets_encrypt_certificate_package_url | default(get_lets_encrypt_certificate_package.url) }}"
       le_domain: "{{ get_lets_encrypt_certificate_package_le_domain | default(get_lets_encrypt_certificate_package.le_domain) }}"
       le_domains: "{{ get_lets_encrypt_certificate_package_le_domains | default(get_lets_encrypt_certificate_package.le_domains) }}"
-      notify: "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) }}"
+      notify: "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) | default('get_lets_encrypt_certificate_package_noop_handler') }}"
       secret: "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
 
 - name: Print _get_lets_encrypt_certificate_package
