@@ -28,9 +28,13 @@ the url of the Let's Encrypt certificate package
 
 the secret to decrypt the certificate package
 
-### `get_lets_encrypt_certificate_package_FQDN`: `get_lets_encrypt_certificate_package.FQDN`
+### `get_lets_encrypt_certificate_package_le_domain`: `get_lets_encrypt_certificate_package.le_domain`
 
-the FQDN of the certificate
+the main domain of the certificate
+
+### `get_lets_encrypt_certificate_package_le_domains`: `get_lets_encrypt_certificate_package.le_domains`
+
+the string of domains for the certificate package
 
 ### `get_lets_encrypt_certificate_package_notify`: `get_lets_encrypt_certificate_package.notify`
 

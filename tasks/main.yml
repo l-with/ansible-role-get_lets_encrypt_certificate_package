@@ -4,10 +4,11 @@
   ansible.builtin.set_fact:
     _get_lets_encrypt_certificate_package:
       url_headers: "{{ get_lets_encrypt_certificate_package_url_headers | default(get_lets_encrypt_certificate_package.url_headers ) }}"
-      url:         "{{ get_lets_encrypt_certificate_package_url | default(get_lets_encrypt_certificate_package.url) }}"
-      FQDN:        "{{ get_lets_encrypt_certificate_package_FQDN | default(get_lets_encrypt_certificate_package.FQDN) }}"
-      notify:      "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) }}"
-      secret:      "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
+      url: "{{ get_lets_encrypt_certificate_package_url | default(get_lets_encrypt_certificate_package.url) }}"
+      le_domain: "{{ get_lets_encrypt_certificate_package_le_domain | default(get_lets_encrypt_certificate_package.le_domain) }}"
+      le_domains: "{{ get_lets_encrypt_certificate_package_le_domains | default(get_lets_encrypt_certificate_package.le_domains) }}"
+      notify: "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) }}"
+      secret: "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
 
 - name: Print _get_lets_encrypt_certificate_package
   ansible.builtin.debug:
@@ -18,14 +19,14 @@
   ansible.builtin.get_url:
     headers: "{{ _get_lets_encrypt_certificate_package.url_headers }}"
     url: "{{ _get_lets_encrypt_certificate_package.url }}"
-    dest: "/tmp/le_{{ _get_lets_encrypt_certificate_package.FQDN }}.zip"
+    dest: "/tmp/le_{{ _get_lets_encrypt_certificate_package.le_domains }}.zip"
   notify: "{{ _get_lets_encrypt_certificate_package.notify }}"
 
 - name: Ensure decrypt and untar Let's Encrypt Certificate Package
   ansible.builtin.shell:
     cmd: >
-      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp/le_{{ _get_lets_encrypt_certificate_package.FQDN }}.zip | tar xzC /
-    creates: /etc/letsencrypt/live/{{ _get_lets_encrypt_certificate_package.FQDN }}
+      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp/le_{{ _get_lets_encrypt_certificate_package.le_domains }}.zip | tar xzC /
+    creates: /etc/letsencrypt/live/{{ _get_lets_encrypt_certificate_package.le_domain }}
   environment:
     LE_CERT_PACKAGE_SECRET: "{{ _get_lets_encrypt_certificate_package.secret }}"
   notify: "{{ _get_lets_encrypt_certificate_package.notify }}"
