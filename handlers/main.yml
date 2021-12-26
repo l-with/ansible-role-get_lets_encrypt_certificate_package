@@ -1,8 +1,7 @@
 ---
 
-- name: Noop handler
+- name: get_lets_encrypt_certificate_package_noop_handler
   ansible.builtin.debug:
     msg: Noop handler
-  when: get_lets_encrypt_certificate_package_noop_handler
 
 ...
