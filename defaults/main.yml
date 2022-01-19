@@ -1,7 +1,0 @@
----
-
-get_lets_encrypt_certificate_package_debug: false
-get_lets_encrypt_certificate_package_group: 'root'
-get_lets_encrypt_certificate_package_owner: 'root'
-
-...

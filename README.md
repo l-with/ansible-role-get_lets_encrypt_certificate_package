@@ -15,6 +15,8 @@ the configuration for the  Let`s Encrypt certificate package as dict with the it
 - secret
 - FQDN
 - notify
+- group
+- owner
 
 ### `get_lets_encrypt_certificate_package_url_headers`: `get_lets_encrypt_certificate_package.url_headers`
 
@@ -36,18 +38,18 @@ the main domain of the certificate
 
 the string of domains for the certificate package
 
-### `get_lets_encrypt_certificate_package_notify`: `get_lets_encrypt_certificate_package.notify`
+### `get_lets_encrypt_certificate_package_notify`: `get_lets_encrypt_certificate_package.notify`: 'get_lets_encrypt_certificate_package_noop_handler'
 
 the handler to notify about changes
 
-### `get_lets_encrypt_certificate_package_debug`: `no`
-
-if debug information should be printed
-
-### `get_lets_encrypt_certificate_package_group`: `'root'`
+### `get_lets_encrypt_certificate_package_group`: `get_lets_encrypt_certificate_package.group`: `'root'`
 
 the group to be set for /etc/letsencrypt
 
-### `get_lets_encrypt_certificate_package_owner`: `'root'`
+### `get_lets_encrypt_certificate_package_owner`: `get_lets_encrypt_certificate_package.owner`: `'root'`
 
 the owner to be set for /etc/letsencrypt
+
+### `get_lets_encrypt_certificate_package_debug`: `get_lets_encrypt_certificate_package.owner`: `false`
+
+if debug information should be printed
