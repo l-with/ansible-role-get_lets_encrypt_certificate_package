@@ -43,3 +43,11 @@ the handler to notify about changes
 ### `get_lets_encrypt_certificate_package_debug`: `no`
 
 if debug information should be printed
+
+### `get_lets_encrypt_certificate_package_group`: `'root'`
+
+the group to be set for /etc/letsencrypt
+
+### `get_lets_encrypt_certificate_package_owner`: `'root'`
+
+the owner to be set for /etc/letsencrypt

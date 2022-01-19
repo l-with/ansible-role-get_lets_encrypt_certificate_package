@@ -31,4 +31,10 @@
     LE_CERT_PACKAGE_SECRET: "{{ _get_lets_encrypt_certificate_package.secret }}"
   notify: "{{ _get_lets_encrypt_certificate_package.notify }}"
 
+- name: Ensure group and owner of Let's Encrypt Certificate Package files
+  ansible.builtin.file:
+    path: /etc/letsencrypt
+    group: "{{ get_lets_encrypt_certificate_package_group }}"
+    owner: " {{ get_lets_encrypt_certificate_package_owner }}"
+
 ...
