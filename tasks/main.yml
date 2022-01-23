@@ -9,8 +9,6 @@
       le_domains: "{{ get_lets_encrypt_certificate_package_le_domains | default(get_lets_encrypt_certificate_package.le_domains) }}"
       notify: "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) | default('get_lets_encrypt_certificate_package_noop_handler') }}"
       secret: "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
-      group: "{{ get_lets_encrypt_certificate_package_group | default(get_lets_encrypt_certificate_package.group) | default('root') }}"
-      owner: "{{ get_lets_encrypt_certificate_package_owner | default(get_lets_encrypt_certificate_package.owner) | default('root') }}"
       debug: "{{ get_lets_encrypt_certificate_package_debug | default(get_lets_encrypt_certificate_package.debug) | default(false) }}"
 
 - name: Print _get_lets_encrypt_certificate_package
@@ -33,11 +31,5 @@
   environment:
     LE_CERT_PACKAGE_SECRET: "{{ _get_lets_encrypt_certificate_package.secret }}"
   notify: "{{ _get_lets_encrypt_certificate_package.notify }}"
-
-- name: Ensure group and owner of Let's Encrypt Certificate Package files
-  ansible.builtin.file:
-    path: /etc/letsencrypt
-    group: "{{ _get_lets_encrypt_certificate_package.group }}"
-    owner: " {{ _get_lets_encrypt_certificate_package.owner }}"
 
 ...

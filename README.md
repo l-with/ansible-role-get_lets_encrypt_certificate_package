@@ -42,14 +42,6 @@ the string of domains for the certificate package
 
 the handler to notify about changes
 
-### `get_lets_encrypt_certificate_package_group`: `get_lets_encrypt_certificate_package.group`: `'root'`
-
-the group to be set for /etc/letsencrypt
-
-### `get_lets_encrypt_certificate_package_owner`: `get_lets_encrypt_certificate_package.owner`: `'root'`
-
-the owner to be set for /etc/letsencrypt
-
 ### `get_lets_encrypt_certificate_package_debug`: `get_lets_encrypt_certificate_package.owner`: `false`
 
 if debug information should be printed
