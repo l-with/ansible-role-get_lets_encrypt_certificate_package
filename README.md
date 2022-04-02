@@ -45,3 +45,7 @@ the handler to notify about changes
 ### `get_lets_encrypt_certificate_package_debug`: `get_lets_encrypt_certificate_package.owner`: `false`
 
 if debug information should be printed
+
+### `get_lets_encrypt_certificate_package_force`: `get_lets_encrypt_certificate_package.force`: `false`
+
+if the certificate will be allways replaced

@@ -10,6 +10,7 @@
       notify: "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) | default('get_lets_encrypt_certificate_package_noop_handler') }}"
       secret: "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
       debug: "{{ get_lets_encrypt_certificate_package_debug | default(get_lets_encrypt_certificate_package.debug) | default(false) }}"
+      force: "{{ get_lets_encrypt_certificate_package_force | default(get_lets_encrypt_certificate_package.force) | default(false) }}"
 
 - name: Print _get_lets_encrypt_certificate_package
   ansible.builtin.debug:
@@ -31,5 +32,15 @@
   environment:
     LE_CERT_PACKAGE_SECRET: "{{ _get_lets_encrypt_certificate_package.secret }}"
   notify: "{{ _get_lets_encrypt_certificate_package.notify }}"
+  when: not _get_lets_encrypt_certificate_package.force
+
+- name: Force decrypt and untar Let's Encrypt Certificate Package
+  ansible.builtin.shell:
+    cmd: >
+      openssl enc -aes-256-cbc -pbkdf2 -d -pass env:LE_CERT_PACKAGE_SECRET -in /tmp/le_{{ _get_lets_encrypt_certificate_package.le_domains }}.zip | tar xzC /
+  environment:
+    LE_CERT_PACKAGE_SECRET: "{{ _get_lets_encrypt_certificate_package.secret }}"
+  notify: "{{ _get_lets_encrypt_certificate_package.notify }}"
+  when: _get_lets_encrypt_certificate_package.force
 
 ...
