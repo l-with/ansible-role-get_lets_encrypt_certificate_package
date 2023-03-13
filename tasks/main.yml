@@ -1,16 +1,30 @@
 ---
 
-- name: Ensure dict _get_lets_encrypt_certificate_package
+- name: Ensure dict _get_lets_encrypt_certificate_package by get_lets_encrypt_certificate_package
   ansible.builtin.set_fact:
-    _get_lets_encrypt_certificate_package:
-      url_headers: "{{ get_lets_encrypt_certificate_package_url_headers | default(get_lets_encrypt_certificate_package.url_headers ) }}"
-      url: "{{ get_lets_encrypt_certificate_package_url | default(get_lets_encrypt_certificate_package.url) }}"
-      le_domain: "{{ get_lets_encrypt_certificate_package_le_domain | default(get_lets_encrypt_certificate_package.le_domain) | default(get_lets_encrypt_certificate_package_FQDN) }}"
-      le_domains: "{{ get_lets_encrypt_certificate_package_le_domains | default(get_lets_encrypt_certificate_package.le_domains) | default(get_lets_encrypt_certificate_package_FQDN) }}"
-      notify: "{{ get_lets_encrypt_certificate_package_notify | default(get_lets_encrypt_certificate_package.notify) | default('get_lets_encrypt_certificate_package_noop_handler') }}"
-      secret: "{{ get_lets_encrypt_certificate_package_secret | default(get_lets_encrypt_certificate_package.secret) }}"
-      debug: "{{ get_lets_encrypt_certificate_package_debug | default(get_lets_encrypt_certificate_package.debug) | default(false) }}"
-      force: "{{ get_lets_encrypt_certificate_package_force | default(get_lets_encrypt_certificate_package.force) | default(false) }}"
+    _get_lets_encrypt_certificate_package: 
+      url:         "{{ get_lets_encrypt_certificate_package.url }}"
+      url_headers: "{{ get_lets_encrypt_certificate_package.url_headers }}"
+      le_domain:   "{{ get_lets_encrypt_certificate_package.le_domain }}"
+      le_domains:  "{{ get_lets_encrypt_certificate_package.le_domains | default(get_lets_encrypt_certificate_package.le_domain) }}"
+      notify:      "{{ get_lets_encrypt_certificate_package.notify | default('get_lets_encrypt_certificate_package_noop_handler') }}"
+      secret:      "{{ get_lets_encrypt_certificate_package.secret }}"
+      debug:       "{{ get_lets_encrypt_certificate_package.debug | default(false) }}"
+      force:       "{{ get_lets_encrypt_certificate_package.force | default(false) }}"
+  when: get_lets_encrypt_certificate_package is defined
+
+- name: Ensure dict _get_lets_encrypt_certificate_package by get_lets_encrypt_certificate_package
+  ansible.builtin.set_fact:
+    _get_lets_encrypt_certificate_package: 
+      url:         "{{ get_lets_encrypt_certificate_package_url }}"
+      url_headers: "{{ get_lets_encrypt_certificate_package_url_headers }}"
+      le_domain:   "{{ get_lets_encrypt_certificate_package_le_domain | default(get_lets_encrypt_certificate_package_FQDN) }}"
+      le_domains:  "{{ get_lets_encrypt_certificate_package_le_domains | default(get_lets_encrypt_certificate_package_le_domain) | default(get_lets_encrypt_certificate_package_FQDN) }}"
+      notify:      "{{ get_lets_encrypt_certificate_package_notify | default('get_lets_encrypt_certificate_package_noop_handler') }}"
+      secret:      "{{ get_lets_encrypt_certificate_package_secret }}"
+      debug:       "{{ get_lets_encrypt_certificate_package_debug | default(false) }}"
+      force:       "{{ get_lets_encrypt_certificate_package_force | default(false) }}"
+  when: get_lets_encrypt_certificate_package is not defined
 
 - name: Print _get_lets_encrypt_certificate_package
   ansible.builtin.debug:
