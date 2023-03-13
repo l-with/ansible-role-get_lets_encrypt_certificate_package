@@ -13,7 +13,8 @@ the configuration for the  Let`s Encrypt certificate package as dict with the it
 - url_headers
 - url
 - secret
-- FQDN
+- le_domain
+- le_domains
 - notify
 - group
 - owner
