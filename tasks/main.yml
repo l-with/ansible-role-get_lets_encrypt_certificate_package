@@ -13,7 +13,7 @@
       force:       "{{ get_lets_encrypt_certificate_package.force | default(false) }}"
   when: get_lets_encrypt_certificate_package is defined
 
-- name: Ensure dict _get_lets_encrypt_certificate_package by get_lets_encrypt_certificate_package
+- name: Ensure dict _get_lets_encrypt_certificate_package by get_lets_encrypt_certificate_package_*
   ansible.builtin.set_fact:
     _get_lets_encrypt_certificate_package: 
       url:         "{{ get_lets_encrypt_certificate_package_url }}"
